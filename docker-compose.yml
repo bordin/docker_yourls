@@ -1,0 +1,29 @@
+version: '2'
+services:
+    db:
+        image: mariadb:alpine
+        restart: always
+        volumes:
+        - ./mysql/initdb/:/docker-entrypoint-initdb.d
+        - ./mysql/data/:/var/lib/mysql
+        environment:
+        - MYSQL_ROOT_PASSWORD=root
+        - MYSQL_DATABASE=yourls
+        - MYSQL_USER=yourls
+        - MYSQL_PASSWORD=yourls
+    php:
+        image: php:7-fpm-alpine
+        restart: always
+        volumes:
+        - ./www/:/var/www/html
+        expose:
+        - "9000"
+    nginx:
+        image: nginx:alpine
+        restart: always
+        volumes:
+        - ./nginx.conf:/etc/nginx/conf.d:ro
+        volumes_from:
+        - php
+        ports:
+        - 80:80

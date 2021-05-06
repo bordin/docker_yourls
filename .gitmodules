@@ -1,0 +1,4 @@
+[submodule "yourls"]
+	path = yourls
+	url = https://github.com/bordin/yourls
+
