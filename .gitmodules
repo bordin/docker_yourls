@@ -1,4 +1,4 @@
-[submodule "yourls"]
-	path = yourls
-	url = https://github.com/bordin/yourls
-
+[submodule "YOURLS"]
+	path = YOURLS
+	url = https://github.com/bordin/YOURLS.git
+	branch = master
